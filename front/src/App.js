@@ -11,7 +11,7 @@ import Grid from "@mui/material/Grid";
 
 const styleCommonGrid = {
   // Dev
-  border: "1px solid",
+  // border: "1px solid",
   // Common
   padding: "20px",
 };

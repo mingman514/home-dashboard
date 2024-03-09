@@ -23,9 +23,10 @@ const Weather = () => {
         Weather
       </Typography>
       <Box component="span" sx={{ marginLeft: 3 }}>
-        <Countdown date={Date.now() + refreshTime} style=""></Countdown>
+        <Countdown date={Date.now() + refreshTime}></Countdown>
       </Box>
       <iframe
+        title={time}
         src={process.env.REACT_APP_WEATHER_APP_URL}
         style={{
           display: "block",

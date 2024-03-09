@@ -19,17 +19,22 @@ const Notes = () => {
   // 입력 폼의 상태
   const [newTodo, setNewTodo] = useState("");
 
+  const fetchData = async () => {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/notes`);
+    const jsonData = await response.json();
+    if (jsonData.status) {
+      console.error("Server error. Status code:", jsonData.status);
+    } else {
+      setTodos(jsonData.result.data);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/notes`);
-      const jsonData = await response.json();
-      if (jsonData.status) {
-        console.error("Server error. Status code:", jsonData.status);
-      } else {
-        setTodos(jsonData.result.data);
-      }
-    };
     fetchData();
+    const interval = setInterval(() => fetchData(), 10000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   const saveNotesInServer = async (data) => {

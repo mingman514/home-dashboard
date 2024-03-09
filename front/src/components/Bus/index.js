@@ -52,14 +52,18 @@ const Bus = () => {
   const requestData = async () => {
     let parsedData = [];
     // // 유사 정류장 ID 순회하면서 버스 정보 수집
-    // for (let i = 0; i < targetStop.stationId.length; i += 1) {
-    //   const fetchedData = await getStationData(targetStop.stationId[i]);
-    //   parsedData = [...parsedData, ...parseData(fetchedData)];
-    // }
-
-    // test
-    parsedData = testData;
-
+    if (process.env.REACT_APP_ENV === "production") {
+      console.log("[Env: Production]");
+      for (let i = 0; i < targetStop.stationId.length; i += 1) {
+        const fetchedData = await getStationData(targetStop.stationId[i]);
+        parsedData = [...parsedData, ...parseData(fetchedData)];
+      }
+    } else {
+      console.log("[Env: Development]");
+      // test
+      parsedData = testData;
+    }
+    console.log("parsedData", parsedData);
     // 도착정보 없는 데이터 필터
     const filteredData = await filterData(parsedData);
     const sortedData = sortData(filteredData);
@@ -83,7 +87,6 @@ const Bus = () => {
       if (parseInt(a.predictTime1, 10) > parseInt(b.predictTime1, 10)) return 1;
       return 0;
     });
-    console.log("Sorted:", sortedData);
     return sortedData;
   };
 
@@ -98,11 +101,11 @@ const Bus = () => {
     for (let i = 0; i < buses.length; i += 1) {
       const bus = buses[i];
       res.push({
-        routeName: bus.children[27].value,
-        locationNo1: bus.children[14].value,
-        locationNo2: bus.children[14].value,
-        predictTime1: bus.children[20].value,
-        predictTime2: bus.children[21].value,
+        routeName: bus.children[31].value,
+        locationNo1: bus.children[16].value,
+        locationNo2: bus.children[17].value,
+        predictTime1: bus.children[24].value,
+        predictTime2: bus.children[25].value,
       });
     }
     return res;
@@ -119,7 +122,7 @@ const Bus = () => {
     );
     const xmlRes = response.data;
     const resJson = new XMLParser().parseFromString(xmlRes);
-    console.log("resJson:", resJson);
+    // console.log("resJson from XML response:", resJson);
     return resJson;
   };
 

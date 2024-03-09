@@ -1,0 +1,21 @@
+services:
+  back:
+    image: back:0.1.0
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+
+  front:
+    image: front:0.1.0
+    ports:
+      - "80:3000"
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+
+  weatherApp:
+    image: weather_app:0.1.0
+    build:
+      context: ./third-party/weather-app
+      dockerfile: Dockerfile
+
