@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+body {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: rgb(72, 157, 255);
+  background-image: url(../img/background.jpg);
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-sizing: border-box;
+  min-width: 280px;
+}
+
+@media (max-width: 500px) {
+  body {
+    background-image: url(../img/background_m.jpg);
+    background-position: center bottom;
+  }
+}
+
+#root {
+  width: 100%;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #242424;
+}
+
+
+/* ------------------------
+          reset 
+--------------------------*/
+* {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+button {
+  border-radius: 4px;
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  background: none;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+button i {
+  text-indent: -9999px;
+}
+button:focus, button:focus-visible {
+  outline: none;
+}
+a {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+}
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+input {
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1;
+}
+
+
+/* ------------------------
+          common 
+--------------------------*/
+.header_inner {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.wrap {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.container {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.19);
+  border-radius: 10px;
+}
+@media (max-width: 500px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+
+/* ------------------------
+          nav 
+--------------------------*/
+#nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0 20px;
+}
+#nav h1 {
+  font-size: 24px;
+  color: #fff;
+}
+#nav .btn-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+#nav .btn-group .nav-btn {
+  position: absolute;
+  padding: 5px;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+#nav .btn-group .nav-btn:hover {
+  top: -22px;
+  transition: all 0.8s;
+}
+#nav .btn-group .btn_search {
+  right: 42px;
+  width: 34px;
+  height: 34px;
+}
+#nav .btn-group .btn_location {
+  right: 0;
+  width: 36px;
+  height: 36px;
+}
+#nav .btn-group button i {
+  display: block;
+}
+
+
+/* ------------------------
+          검색창 
+--------------------------*/
+.search_inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.search-input {
+  display: block;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid #fff;
+  background-color: #fff;
+  padding: 5px 10px;
+  margin-right: 7px;
+  line-height: 1;
+  box-sizing: border-box;
+}
+.search-input:focus {
+  outline: none;
+}
+.search-btn {
+  width: 70px;
+  height: 36px;
+  background-color: #333;
+  color: #fff;
+}
+@media (max-width: 500px) {
+  .search-input {
+    width: calc(100% - 77px);
+  }
+  .search-btn {
+    width: 70px;
+  }
+}
+
+
+/* ------------------------
+        날씨 검색결과 
+--------------------------*/
+.weather {
+  margin-bottom: 30px;
+}
+.weather_inner {
+  display: block;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.weather_main {
+  position: relative;
+}
+.weather_main .btn_add {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.weather_main .icon-img {
+  width: 100px;
+  height: 100px;
+}
+.weather_main .location {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+.weather_main .temp {
+  margin-bottom: 12px;
+  line-height: 1;
+  font-size: 44px;
+  color: #fff;
+  letter-spacing: -.02rem;
+}
+.weather_main .description {
+  line-height: 1;
+  font-size: 16px;
+  color: #fff;
+}
+.weather_sub {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-top: 27px;
+}
+.weather_sub_inner {
+  display: block;
+  width: 33%;
+  text-align: center;
+}
+.weather_sub_inner i {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.ico_wind {
+  background-image: url(../assets/ico_wind.png);
+}
+.ico_humidity {
+  background-image: url(../assets/ico_humidity.png);
+}
+.ico_cloud {
+  background-image: url(../assets/ico_cloud.png);
+}
+.weather_sub_inner p {
+  margin: 15px 0 10px;
+  font-size: 16px;
+  color: #fff;
+}
+.weather_sub_inner h4 {
+  font-weight: 400;
+  font-size: 12px;
+  color: #fff;
+}
+@media (max-width: 500px) {
+  .weather_inner {
+    margin-top: 0;
+  }
+  .weather_main .btn_add {
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+  }
+  .weather_main .temp {
+    font-size: 30px;
+  }
+  .weather_sub_inner i {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/*  */
+.search-result_inner {
+  
+}
+
+
+/* ------------------------
+        즐겨찾기 목록 
+--------------------------*/
+.myList {
+  margin-top: 15px;
+  padding: 20px;
+  background-color: rgb(255, 255, 255,.14);
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+.myList-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 20px;
+  margin-bottom: 30px;
+}
+.myList-head h3 {
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+.myList-head .btn_edit {
+  position: absolute;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  padding: 5px 0 5px 5px;
+  cursor: pointer;
+}
+.myList-head .ico_edit {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: url(../assets/ico_edit.png) 0 0 no-repeat;
+  background-size: 100%;
+  opacity: .7;
+}
+.myList-body {
+  display:flex;
+  flex-wrap: wrap;
+  margin: -1%;
+}
+.myList_inner {
+  position: relative;
+  margin: 1%;
+  border: 2px solid #eee;
+  background-image: linear-gradient(#fff, #fff);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  border-radius: 40px;
+  box-sizing: border-box;
+}
+.myList_inner:nth-child(4n) {
+  margin-right: 0;
+}
+.myList_inner .myList-btn {
+  display: block;
+  width: 100%;
+  padding: 11px 20px;
+  background-color: #fff;
+  border-radius: 40px;
+  font-size: 14px;
+  color: #333;
+  text-transform: capitalize;
+}
+
+/* 활성화 시 */
+.myList_inner.active {
+  border: 2px solid transparent;
+  background-image: linear-gradient(#fff, #fff), 
+    linear-gradient(to right, #ff4cd5aa, #0fb3ffc9);
+}
+.myList_inner.active .myList-btn {
+  background: linear-gradient(to right, #0099ffc9, #ff0095aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btn_delete {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  cursor: pointer;
+}
+.btn_delete .ico_delete {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: url(../assets/ico_delete.png) 0 0 no-repeat;
+  background-size: 100%;
+}
+
+/* 비활성화 시 */
+.disabled {
+  pointer-events: none;
+  opacity: 0.8;
+  color: #d8d8d8;
+}
+
+/* 에러메시지 */
+.err_msg {
+  height: 200px;
+  line-height: 1.4rem;
+  color: #fff;
+  font-size: 14px;
+}
+@media (max-width: 500px) {
+  .myList-head {
+    margin-bottom: 20px;
+  }
+  .myList_inner .myList-btn {
+    padding: 7px 15px;
+    font-size: 13px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
