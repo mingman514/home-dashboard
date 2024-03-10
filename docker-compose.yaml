@@ -1,21 +1,47 @@
 services:
   back:
     image: back:0.1.0
+    expose:
+      - "8000"
     build:
       context: ./back
       dockerfile: Dockerfile
+    networks:
+      main:
 
   front:
     image: front:0.1.0
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     build:
       context: ./front
       dockerfile: Dockerfile
+    networks:
+      main:
 
-  weatherApp:
+  weather-app:
     image: weather_app:0.1.0
+    expose:
+      - "5173"
     build:
       context: ./third-party/weather-app
       dockerfile: Dockerfile
+    networks:
+      main:
 
+  nginx:
+    image: nginx:1.24.0
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - back
+      - front
+      - weather-app
+    networks:
+      main:
+
+networks:
+  main:

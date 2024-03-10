@@ -1,0 +1,16 @@
+* Requirements
+- docker installed
+- .env file provided
+  - /front
+  - /third-party/weather-app
+
+# Default Port
+- back: 8000
+- front: 3000
+- third-party/weather-app: 5173
+
+# Build
+- sudo docker-compose build
+
+# Run
+- sudo docker-compose up

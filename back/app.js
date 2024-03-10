@@ -6,6 +6,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+const notesRouter = require("./routes/notes");
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+
+app.use('/notes', notesRouter);
 })
