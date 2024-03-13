@@ -46,6 +46,15 @@ const testData = [
   },
 ];
 
+const busColors = {
+  // 노랑
+  "#F7D278": ["78", "79", "88"],
+  // 청록
+  "#98D8CB": ["32-1", "88-1", "9"],
+  // 파랑
+  "#3C79CD": ["320", "302"],
+};
+
 const Bus = () => {
   const [busInfo, setBusInfo] = useState([]);
 
@@ -126,6 +135,16 @@ const Bus = () => {
     return resJson;
   };
 
+  const getBusColor = (busData) => {
+    console.log("busda:", busData.routeName);
+    for (const [key, numbers] of Object.entries(busColors)) {
+      if (numbers.includes(busData.routeName)) {
+        return key;
+      }
+    }
+    return "";
+  };
+
   return (
     <Box>
       <Typography variant="h5" component="span" sx={{ fontSize: "25px" }}>
@@ -142,7 +161,11 @@ const Bus = () => {
       {busInfo.length ? (
         busInfo.map((busData, index) => (
           <Card
-            sx={{ display: "flex", bgcolor: "#F7D278", marginTop: 1 }}
+            sx={{
+              display: "flex",
+              bgcolor: getBusColor(busData),
+              marginTop: 1,
+            }}
             key={index}
           >
             <Box

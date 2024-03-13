@@ -13,19 +13,23 @@ import CheckIcon from "@mui/icons-material/Check";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
+const testData = ["건강하기", "행복하기", "걱정말기"];
+
 const Notes = () => {
   // 할 일 목록을 담는 상태
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(testData);
   // 입력 폼의 상태
   const [newTodo, setNewTodo] = useState("");
 
   const fetchData = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/notes`);
-    const jsonData = await response.json();
-    if (jsonData.status) {
-      console.error("Server error. Status code:", jsonData.status);
-    } else {
-      setTodos(jsonData.result.data);
+    if (process.env.REACT_APP_ENV === "production") {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/notes`);
+      const jsonData = await response.json();
+      if (jsonData.status) {
+        console.error("Server error. Status code:", jsonData.status);
+      } else {
+        setTodos(jsonData.result.data);
+      }
     }
   };
 
@@ -38,15 +42,17 @@ const Notes = () => {
   }, []);
 
   const saveNotesInServer = async (data) => {
-    await fetch(`${process.env.REACT_APP_API_URL}/notes`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        data: data,
-      }),
-    });
+    if (process.env.REACT_APP_ENV === "production") {
+      await fetch(`${process.env.REACT_APP_API_URL}/notes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: data,
+        }),
+      });
+    }
   };
 
   // 새로운 할 일 추가 함수
