@@ -16,11 +16,12 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   try {
+    console.log("req:", req.body);
     fs.writeFileSync(DB_PATH, JSON.stringify(req.body));
     return res.json({ status: 0 });
   } catch (error) {
-    console.error(err);
-    return res.json({ status: 1 });
+    console.error(error);
+    return res.json({ status: 1, msg: error });
   }
 });
 

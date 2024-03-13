@@ -23,6 +23,8 @@ services:
     image: weather_app:0.1.0
     expose:
       - "5173"
+    ports:
+      - "5173:5173"
     build:
       context: ./third-party/weather-app
       dockerfile: Dockerfile

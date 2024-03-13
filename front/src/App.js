@@ -22,13 +22,13 @@ const App = () => {
       <Header />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
-          <Grid item xs={4} md={4} sx={styleCommonGrid}>
+          <Grid item xs={10} md={4} sx={styleCommonGrid}>
             <Weather />
           </Grid>
-          <Grid item xs={4} md={4} sx={styleCommonGrid}>
+          <Grid item xs={10} md={4} sx={styleCommonGrid}>
             <Bus />
           </Grid>
-          <Grid item xs={4} md={4} sx={styleCommonGrid}>
+          <Grid item xs={10} md={4} sx={styleCommonGrid}>
             <Notes />
           </Grid>
         </Grid>
