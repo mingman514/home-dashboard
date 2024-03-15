@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import QRcode from "../../assets/qrcode_104363704_19858192fc62f184a1493d2e6a8f76f3.png";
+// import QRcode from "../../assets/qrcode_104363704_19858192fc62f184a1493d2e6a8f76f3.png";
 
 const Header = () => {
   return (
@@ -10,9 +10,9 @@ const Header = () => {
         <Typography variant="overline" sx={{ fontSize: "30px" }}>
           Ra-Min House Assistant
         </Typography>
-        <img
+        {/* <img
           style={{
-            position: "absolute",
+            position: "sticky",
             bottom: "20px",
             right: "20px",
             width: "50px",
@@ -20,7 +20,7 @@ const Header = () => {
           }}
           src={QRcode}
           alt="QR code"
-        />
+        /> */}
       </Box>
     </header>
   );
